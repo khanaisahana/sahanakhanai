@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahana Khanai Portfolio</title>
+  <link rel="icon" href="sahanakhanai_logo.png" type="image/png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <style>
+    #about {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Project Section Title */
+#projects h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 50px;
+  position: relative;
+}
+#projects h2::after {
+  content: '';
+  width: 60px;
+  height: 3px;
+  background: #007bff;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Project Card Style */
+.project-card {
+  background: #ffffff;
+  border: none;
+  border-radius: 15px;
+  padding: 25px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 123, 255, 0.2);
+}
+.project-card .card-title {
+  color: #007bff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+.project-card .card-text {
+  color: #555;
+  font-size: 0.95rem;
+}
+.project-card .btn-sm {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 20px;
+}
+
+/* Carousel controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 100% 100%;
+}
+
+
+
+
+
+.project-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-slider {
+  scroll-behavior: smooth;
+  padding: 0 20px;
+}
+
+.project-card {
+  min-width: 300px;
+  max-width: 300px;
+  flex: 0 0 auto;
+  border-radius: 15px;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  background: #fff;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 123, 255, 0.2);
+}
+.project-card .card-title {
+  color: #007bff;
+  font-weight: 600;
+}
+.project-card .card-text {
+  color: #555;
+}
+.project-card .btn-sm {
+  border-radius: 20px;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 14px;
+  z-index: 10;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.slider-btn:hover {
+  background: #0056b3;
+}
+.slider-btn.left {
+  left: 0;
+}
+.slider-btn.right {
+  right: 0;
+}
+
+.project-slider {
+  scroll-behavior: smooth;
+  padding: 0 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.project-slider::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+.timeline {
+  position: relative;
+  padding-left: 30px;
+  border-left: 2px solid #007bff;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 20px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -10px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  background-color: #007bff;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.timeline-content h5 {
+  font-weight: bold;
+  color: #343a40;
+}
+
+.timeline-content p {
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.timeline-content .text-muted {
+  color: #6c757d;
+}
+
+@media (max-width: 576px) {
+  .timeline {
+    padding-left: 20px;
+  }
+  .timeline-item {
+    margin-bottom: 30px;
+  }
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    left: -8px;
+  }
+}
+.contact-icon {
+  color: #ffffff;
+  margin: 15px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-icon:hover {
+  color: #0d6efd;
+  transform: scale(1.2);
+}
+
+
+
+
+#get-in-touch {
+  /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364); */
+  /* background: linear-gradient(135deg, #0f2027, #598999, #184153); */
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+#get-in-touch h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+#get-in-touch h4 {
+  font-weight: 400;
+  font-style: italic;
+  color: #d1ecf1;
+}
+
+#get-in-touch .contact-button {
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+#get-in-touch .contact-button:hover {
+  background-color: #ffffff;
+  color: #2c5364;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.footer {
+  background-color: #111;
+  font-size: 0.95rem;
+}
+
+.footer p {
+  margin: 0.3rem 0;
+  color: #ccc;
+}
+
+.footer strong {
+  color: #fff;
+}
+
+.footer .text-muted {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+
+.navbar-brand img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 4px #66BFBF);
+}
+
+.navbar-brand:hover img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px #66BFBF);
+}
+
+
+
+
+
+/* Smooth fade-in and slide animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+.animate-slide-up {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* Optional Animated Glow Background (Soft dots or circles) */
+.animated-bg::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05), transparent 40%),
+              radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05), transparent 40%);
+  animation: bgPulse 10s infinite alternate;
+  z-index: 0;
+}
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+@keyframes bgPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+/* Ensure content is above background */
+.hero-section .container {
+  z-index: 1;
+  position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+.display-heading {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-family: 'Sacramento', cursive;
+  color: #66BFBF;
+}
+
+.hero-subheading {
+  font-size: clamp(1rem, 2.5vw, 1.75rem);
+  font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .btn-lg {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+  </style>
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: true,
+    duration: 800,
+    easing: 'ease-in-out'
+  });
+</script>
+</head>
+
+<body>
+  <!-- Navbar -->
+
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm fixed-top">
+    <div class="container">
+    
+       
+
+<a class="navbar-brand d-flex align-items-center" href="#">
+  <img src="sahanakhanai_logo.png" alt="Sahana Khanai Logo" style="height: 50px; margin-right: 10px;">
+  <span class="text-white font-weight-bold">Sahana Khanai</span>
+</a>
+
+
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item text-white"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item text-white"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item text-white"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item text-white"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item text-white"><a class="nav-link" href="#get-in-touch">Contact</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+  <!-- Hero Section -->
+<!-- <section class="hero-section text-center d-flex align-items-center justify-content-center" 
+         style="min-height: 100vh; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #ffffff; position: relative; overflow: hidden;">
+  
+   <div class="animated-bg"></div>
+
+  <div class="container">
+    <h1 class="display-3 font-weight-bold mb-3 animate-fade-in display-heading" style="font-family: 'Sacramento', cursive; color: #66BFBF;">
+      Hi, I'm Sahana Khanai
+    </h1>
+    <p class="hero-subheading lead mb-4 animate-slide-up" style="font-family: 'Montserrat', sans-serif; font-size: 1.5rem;">
+      Generative AI Engineer · Java Full Stack Developer
+    </p>
+    <div class="mt-4 animate-fade-in">
+      <a href="Sahana_Khanai_Resume.pdf" 
+         class="btn btn-lg btn-outline-light mr-3 px-4 py-2"
+         style="border: 2px solid #66BFBF; color: #66BFBF; transition: all 0.3s ease;">
+         Download Resume
+      </a>
+      <a href="#contact" 
+         class="btn btn-lg btn-outline-light px-4 py-2"
+         style="border: 2px solid #66BFBF; color: #66BFBF; transition: all 0.3s ease;">
+         Contact Me
+      </a>
+    </div>
+  </div>
+</section>
+ -->
+
+
+
+<!-- Hero Section -->
+<section class="hero-section text-center d-flex align-items-center justify-content-center mt-5 px-3" style="min-height: 100vh; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #ffffff;">
+  <div class="container">
+    <h1 class="display-3 font-weight-bold mb-3 animate-fade-in font-weight-bold mb-3 display-heading">Hi, I'm Sahana Khanai</h1>
+    <p class="hero-subheading lead mb-4 animate-slide-up">Generative AI Engineer | Java Full Stack Developer</p>
+    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+      <a href="SAHANA KHANAI resume 17th June 2025.docx" class="btn btn-outline-light btn-lg mb-2 mb-sm-0 mr-sm-3" style="transition: all 0.3s ease; border: 2px solid #66BFBF; color: #66BFBF; transition: all 0.3s ease;">Download Resume</a>
+      <a href="#contact" class="btn btn-outline-light btn-lg" style="transition: all 0.3s ease; transition: all 0.3s ease; border: 2px solid #66BFBF; color: #66BFBF; transition: all 0.3s ease;">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <!-- Hero Section -->
+<!-- <section class="hero-section text-center d-flex align-items-center justify-content-center mt-5" style="min-height: 100vh; background: linear-gradient(135deg, #0f2027, #598999, #184153); color: #ffffff;">
+  <div class="container">
+    <h1 class="display-4 font-weight-bold mb-3">Hi, I'm Sahana Khanai</h1>
+    <p class="lead mb-4">Generative AI Engineer | Java Full Stack Developer</p>
+    <div>
+      <a href="Sahana_Khanai_Resume.pdf" class="btn btn-outline-light btn-lg mr-3" style="transition: all 0.3s ease;">Download Resume</a>
+      <a href="#contact" class="btn btn-outline-light btn-lg" style="transition: all 0.3s ease;">Contact Me</a>
+    </div>
+  </div>
+</section> -->
+
+<!-- About -->
+<section id="about" class="py-5" style="background-color: #f8f9fa;">
+  <div class="container">
+    <h2 class="text-center font-weight-bold mb-4" style="color: #2c3e50;">About Me</h2>
+    <p class="lead text-center mx-auto" style="max-width: 900px; color: #444; line-height: 1.7;">
+      I am a passionate developer from India with <strong>1.8+ years</strong> of experience in <strong>Java Full Stack Development</strong> and a strong interest in <strong>Generative AI</strong>. I graduated as a <strong>Gold Medalist</strong> in Computer Science and Engineering from Jain College of Engineering and Research with a CGPA of <strong>9.14</strong>. Currently, I work at <strong>TCS</strong>, where I build scalable enterprise applications using <strong>Java, Spring Boot, RESTful APIs</strong>, and integrate Generative AI into real-world use cases to drive innovation.
+    </p>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="py-5" style="background-color: #f0f4f8;">
+  <div class="container">
+    <h2 class="text-center font-weight-bold mb-5" style="color: #2c3e50;">Skills</h2>
+    <div class="row text-center">
+      <!-- Full Stack -->
+      <div class="col-md-3 mb-4">
+        <div class="p-4 shadow-sm rounded bg-white skill-card h-100">
+          <i class="fas fa-code fa-2x text-primary mb-3"></i>
+          <h5 class="font-weight-bold mb-2">Full Stack</h5>
+          <p class="mb-0">Java, Spring Boot, JSP, React, MySQL</p>
+        </div>
+      </div>
+      <!-- Gen AI -->
+      <div class="col-md-3 mb-4">
+        <div class="p-4 shadow-sm rounded bg-white skill-card h-100">
+          <i class="fas fa-brain fa-2x text-success mb-3"></i>
+          <h5 class="font-weight-bold mb-2">Generative AI</h5>
+          <p class="mb-0">LangChain, Hugging Face, RAG, Prompt Engineering</p>
+        </div>
+      </div>
+      <!-- DevOps -->
+      <div class="col-md-3 mb-4">
+        <div class="p-4 shadow-sm rounded bg-white skill-card h-100">
+          <i class="fas fa-tools fa-2x text-warning mb-3"></i>
+          <h5 class="font-weight-bold mb-2">DevOps</h5>
+          <p class="mb-0">Docker, Jenkins, Git, CI/CD</p>
+        </div>
+      </div>
+      <!-- Frontend -->
+      <div class="col-md-3 mb-4">
+        <div class="p-4 shadow-sm rounded bg-white skill-card h-100">
+          <i class="fas fa-globe fa-2x text-info mb-3"></i>
+          <h5 class="font-weight-bold mb-2">Frontend</h5>
+          <p class="mb-0">HTML, CSS, JavaScript, Bootstrap</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section id="projects" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Projects</h2>
+
+    <div class="project-slider-wrapper position-relative">
+      <button class="slider-btn left" onclick="scrollProjects(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="project-slider d-flex overflow-auto">
+        <div class="project-card card mx-3">
+          <div class="card-body">
+            <h5 class="card-title">GenAI Blogging App</h5>
+            <p class="card-text">Blog platform with LangChain-powered generation, JWT auth, FastAPI backend.</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">GitHub</a>
+          </div>
+        </div>
+        <div class="project-card card mx-3">
+          <div class="card-body">
+            <h5 class="card-title">Customer Churn Classifier</h5>
+            <p class="card-text">ML-powered Streamlit dashboard to predict customer churn based on CSV input.</p>
+            <a href="https://sahanakhanai-annclassificationchurn.streamlit.app/" class="btn btn-outline-primary btn-sm">Live Demo</a>
+          </div>
+        </div>
+        <div class="project-card card mx-3">
+          <div class="card-body">
+            <h5 class="card-title">PG Management System</h5>
+            <p class="card-text">Full-stack Java application to manage PG bookings using JSP, Servlets & MySQL.</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
+          </div>
+        </div>
+        <!-- Add more projects as needed -->
+
+
+        <div class="project-card card mx-3">
+          <div class="card-body">
+            <h5 class="card-title">GenAI </h5>
+            <p class="card-text">Blog platform with LangChain-powered generation, JWT auth, FastAPI backend.</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">GitHub</a>
+          </div>
+        </div>
+        <div class="project-card card mx-3">
+          <div class="card-body">
+            <h5 class="card-title">Customer </h5>
+            <p class="card-text">ML-powered Streamlit dashboard to predict customer churn based on CSV input.</p>
+            <a href="https://sahanakhanai-annclassificationchurn.streamlit.app/" class="btn btn-outline-primary btn-sm">Live Demo</a>
+          </div>
+        </div>
+        <div class="project-card card mx-3">
+          <div class="card-body">
+            <h5 class="card-title">PG </h5>
+            <p class="card-text">Full-stack Java application to manage PG bookings using JSP, Servlets & MySQL.</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="slider-btn right" onclick="scrollProjects(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- Experience -->
+<section id="experience" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h5 class="mb-1">Java Full Stack Developer</h5>
+          <p class="mb-0"><strong>Tata Consultancy Services (TCS)</strong> | Apr 2024 - Present</p>
+          <p class="text-muted">Building robust enterprise applications using Java, Spring Boot, Spring MVC, RESTful APIs, Spring Security, JDBC, JSP, Hibernate, JWT, PostgreSQL, MySQL, and React.js. Integrated CI/CD with Docker, Jenkins, and SonarQube. Involved in cloud computing and Generative AI integration.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h5 class="mb-1">Software Developer</h5>
+          <p class="mb-0"><strong>NSREEM</strong> | Feb 2023 - May 2023</p>
+          <p class="text-muted">Designed and developed interactive and responsive web interfaces using HTML, CSS, JavaScript. Led dynamic landing page development that increased user engagement by 20%. Contributed to backend development using PHP and optimized page loading time by 15%.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h5 class="mb-1">Artificial Intelligence Engineer</h5>
+          <p class="mb-0"><strong>Knowx Innovations Pvt Ltd</strong> | Sep 2022 - Oct 2022</p>
+          <p class="text-muted">Gained hands-on exposure to AI development environments and research practices.</p>
+        </div>
+      </div>
+
+      
+
+    </div>
+  </div>
+</section>
+
+<!-- Get In Touch -->
+<section id="get-in-touch" class="py-5 bg-dark text-white">
+  <div class="container text-center">
+    <h2 class="display-3 font-weight-bold mb-3 animate-fade-in" style="color: #66BFBF;">Get In Touch</h2>
+    <h4 class="mb-4 font-italic">If you're passionate about building and learning, let's connect!</h4>
+    <p class="lead mb-4">
+      Whether it’s discussing <strong>Generative AI, Full Stack Development</strong>, or collaborating on exciting projects —<br>
+      I’m always open to meaningful conversations and new opportunities.
+    </p>
+    <a class="btn btn-outline-light btn-lg px-4 py-2 rounded-pill shadow-sm contact-button" style="border: 2px solid #66BFBF; color: #66BFBF; transition: all 0.3s ease;" 
+       href="mailto:sahana.khanai.jcer.cs061@gmail.com">
+      📬 CONTACT ME
+    </a>
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="contact-card p-4 rounded shadow-sm text-center">
+          <div class="d-flex justify-content-around flex-wrap">
+            <a href="mailto:sahanakhanai@example.com" class="contact-icon" target="_blank">
+              <i class="fas fa-envelope fa-2x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/sahanakhanai" class="contact-icon" target="_blank">
+              <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="https://github.com/khanaisahana" class="contact-icon" target="_blank">
+              <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="https://www.hackerrank.com/sahana_khanai" class="contact-icon" target="_blank">
+              <i class="fab fa-hackerrank fa-2x"></i>
+            </a>
+            <a href="https://www.kaggle.com/sahanakhanai" class="contact-icon" target="_blank">
+              <i class="fab fa-kaggle fa-2x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  
+
+
+
+  <!-- Footer -->
+<footer class="footer text-center py-4 bg-dark text-white">
+  <div class="container">
+    <p class="mb-0">&copy; 2025 <strong>Sahana Khanai</strong>. All rights reserved.</p>
+    <p class="small text-muted mb-0">Designed & Developed with ❤️ by Sahana Khanai</p>
+  </div>
+</footer>
+
+
+  <script>
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const currentTheme = document.body.getAttribute("data-theme");
+      document.body.setAttribute("data-theme", currentTheme === "light" ? "dark" : "light");
+    });
+  
+  function scrollProjects(direction) {
+    const container = document.querySelector('.project-slider');
+    const scrollAmount = 320; // Equal to card width + margin
+    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  }
+</script>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
