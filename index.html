@@ -776,11 +776,6 @@ input, textarea, [contenteditable="true"] {
 
 
   <script>
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      const currentTheme = document.body.getAttribute("data-theme");
-      document.body.setAttribute("data-theme", currentTheme === "light" ? "dark" : "light");
-    });
-  
   function scrollProjects(direction) {
     const container = document.querySelector('.project-slider');
     const scrollAmount = 320; // Equal to card width + margin
